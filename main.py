@@ -170,13 +170,18 @@ def main():
                 print('%s'%a[tmp])
             print('')
         elif i=='4':
+            h=0
             tmpword=input()
             if tmpword in wdic:
-                print('Users who tweeted a word is')
+                tmpl=a
+                print('Users list who tweeted a word is')
                 for tmp in wdic[tmpword]:
-                    print('%s'%a[tmp])
+                    if tmp in tmpl:
+                        print('%s'%tmpl[tmp])
+                        del tmpl[tmp]
+                        h=h+1
                 tmp4=wdic[tmpword]
-                print('')
+                print('%s users'%h)
             else:
                 print('Users who tweeted %s not exist' % tmpword)
         elif i=='5':
@@ -202,6 +207,10 @@ def main():
             tmpword = input()
             tmp=wdic[tmpword]
             tmpl=[]
+            for tmpu in tmp:
+                if tmpu in a:
+                    del a[tmpu]
+                    l=l-1
             for item in tmp:
                 if item in wcdic:
                     tmpl = tmpl + wcdic[item]
@@ -222,6 +231,7 @@ def main():
                     if tmpu1 in fdic[tmpu]:
                         fdic[tmpu].remove(tmpu1)
                         k=k-1
+
             print('Delete all users who mentioned a word %s complete.\n'%tmpword)
         elif i=='8':
             print('Strongly connected component is\n')
@@ -231,3 +241,9 @@ def main():
             break
 
 main()
+
+
+
+
+
+
